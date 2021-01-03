@@ -1,6 +1,7 @@
 
 
 package com.example.demo.service;
+
 import com.example.demo.jwt.JwtService;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserLogic;
@@ -53,14 +54,14 @@ public class UserService {
 
     public User createUserToken(String username, String secret) {
         User u = userLogic.getByColumnName("username", username).get(0);
-        Map<String,Object> userMap = new HashMap<>();
-        userMap.put("user",u);
-        String token = jwtService.createToken(u.getUsername(),userMap,secret, dateGenerator.getExpirationDate());
+        Map<String, Object> userMap = new HashMap<>();
+        userMap.put("user", u);
+        String token = jwtService.createToken(u.getUsername(), userMap, secret, dateGenerator.getExpirationDate());
         u.setToken(token);
         return u;
     }
 
     public User validateUser(String token, String secret) {
-        return jwtService.isValid(token,secret);
+        return jwtService.isValid(token, secret);
     }
 }

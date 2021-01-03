@@ -42,7 +42,7 @@ public class JwtService {
                 String secret2 = new String(Base64.encodeBase64(secret.getBytes()));
                 Claims claims = Jwts.parser().setSigningKey(secret2).parseClaimsJws(token).getBody();
                 String object = gson.toJson(claims.get("user"));
-                User user  =gson.fromJson(object,User.class);
+                User user = gson.fromJson(object, User.class);
                 return user;
             } catch (JwtException e) {
                 LOGGER.error(e.getMessage());
@@ -63,8 +63,6 @@ public class JwtService {
         }
         return null;
     }
-
-
 
 
 }

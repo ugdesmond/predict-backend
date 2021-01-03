@@ -10,7 +10,6 @@ public enum Constant {
     }
 
 
-
     public enum STATUS {
         PENDING("PENDING"),
         COMPLETED("COMPLETED"),
@@ -32,6 +31,7 @@ public enum Constant {
             return this.value;
         }
     }
+
     public enum ROLES {
         USER("USER"),
         ADMIN("COMPLETED");

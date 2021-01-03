@@ -39,22 +39,22 @@ public class UserController {
     private BusinessUserLogic businessUserLogic;
     private Logger logger = Logger.getLogger(UserController.class);
 
-    public UserController(StringSupport stringSupport, UserLogic userLogic,BusinessLogicModle businessLogicModle,BusinessUserLogic businessUserLogic) {
+    public UserController(StringSupport stringSupport, UserLogic userLogic, BusinessLogicModle businessLogicModle, BusinessUserLogic businessUserLogic) {
         this.stringSupport = stringSupport;
         this.userLogic = userLogic;
-        this.businessLogicModle=businessLogicModle;
-        this.businessUserLogic=businessUserLogic;
+        this.businessLogicModle = businessLogicModle;
+        this.businessUserLogic = businessUserLogic;
     }
 
     @Transactional
     @RequestMapping(value = "/user", method = RequestMethod.POST)
     public ResponseEntity<MessageResponse<UserViewModel>> createUser(UserViewModel userViewModel) throws Exception {
-        MessageResponse<UserViewModel> messageResponse ;
+        MessageResponse<UserViewModel> messageResponse;
 
         try {
-            List<User> userObject = userLogic.getByColumnName("username",userViewModel.getUserName());
-            if(userObject != null  && !userObject.isEmpty()){
-                throw new ResponseStatusException(HttpStatus.CONFLICT,"User already exist!");
+            List<User> userObject = userLogic.getByColumnName("username", userViewModel.getUserName());
+            if (userObject != null && !userObject.isEmpty()) {
+                throw new ResponseStatusException(HttpStatus.CONFLICT, "User already exist!");
             }
             messageResponse = new MessageResponse<>();
             User user = new User();
@@ -72,7 +72,7 @@ public class UserController {
         } catch (Exception e) {
             e.printStackTrace();
             logger.info(e.getMessage());
-            throw  new Exception(e);
+            throw new Exception(e);
         }
 
 
@@ -96,11 +96,9 @@ public class UserController {
     }
 
 
-
-
     @Async
     @RequestMapping(value = "/buisness-user", method = RequestMethod.POST)
-    public CompletableFuture<ResponseEntity<MessageResponse<List<BusinessUser>>>> createBusinessUser(@RequestParam Long business,@RequestParam Integer userId){
+    public CompletableFuture<ResponseEntity<MessageResponse<List<BusinessUser>>>> createBusinessUser(@RequestParam Long business, @RequestParam Integer userId) {
         MessageResponse<List<BusinessUser>> messageResponse = new MessageResponse<>();
         HttpHeaders headers = null;
         List<BusinessUser> businessList = new ArrayList<>();
@@ -128,7 +126,7 @@ public class UserController {
 
     @Async
     @RequestMapping(value = "/buisness-user", method = RequestMethod.GET)
-    public CompletableFuture<ResponseEntity<MessageResponse<List<BusinessUser>>>> createBusinessUser(){
+    public CompletableFuture<ResponseEntity<MessageResponse<List<BusinessUser>>>> createBusinessUser() {
         MessageResponse<List<BusinessUser>> messageResponse = new MessageResponse<>();
         HttpHeaders headers = null;
         List<BusinessUser> businessList;

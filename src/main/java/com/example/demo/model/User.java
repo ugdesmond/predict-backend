@@ -6,13 +6,13 @@ import java.io.Serializable;
 
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false, unique = true)
     String username;
     @Column(nullable = false)
     String password;
@@ -62,24 +62,24 @@ public class User implements Serializable {
         this.token = token;
     }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public void setSalt(String salt) {
-		this.salt = salt;
-	}
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
 
-	public void setRole(String role) {
-		this.role = role;
-	}
-    
+    public void setRole(String role) {
+        this.role = role;
+    }
+
 }

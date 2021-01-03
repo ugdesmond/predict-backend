@@ -78,7 +78,7 @@ public class Utility {
         DateFormat date = new SimpleDateFormat("dd-MM-yyyy");
         Date parsedDate = null;
         try {
-            if(parsedDate==null)
+            if (parsedDate == null)
                 return parsedDate;
             parsedDate = date.parse(dateTime);
         } catch (Exception e) {
@@ -192,7 +192,7 @@ public class Utility {
         return file_name;
     }
 
-    public  String formatMoneyNumber(String money) {
+    public String formatMoneyNumber(String money) {
         if (money != null && money != "") {
             Double amount = Double.parseDouble(money);
             DecimalFormat formatter = new DecimalFormat("###,###,##0.00");
@@ -201,7 +201,7 @@ public class Utility {
         return "0";
     }
 
-    public  List<Date> returnDateRangeList(String beginDate, String endDate) {
+    public List<Date> returnDateRangeList(String beginDate, String endDate) {
         List<Date> dateRangeList = new ArrayList<>();
         Date fromDate = convertToDateObject(beginDate);
         Date toDate = convertToDateObject(endDate);
@@ -215,7 +215,7 @@ public class Utility {
     }
 
 
-    public  String capitalizeFirstLetter(String str) {
+    public String capitalizeFirstLetter(String str) {
         return WordUtils.capitalize(str);
     }
 
@@ -227,8 +227,8 @@ public class Utility {
 
 
     public <T> List<T> convertToDtoList(Object entityObjectList, final Class<T> tClass) {
-        List<T> list = (List)entityObjectList;
-        return  list.stream().map(e -> modelMapper.map(e, tClass)).collect(Collectors.toList());
+        List<T> list = (List) entityObjectList;
+        return list.stream().map(e -> modelMapper.map(e, tClass)).collect(Collectors.toList());
 
     }
 

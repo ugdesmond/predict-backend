@@ -21,7 +21,7 @@ public class HeaderHandler {
     public void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setHeader(ALLOW_ORIGIN, STAR);
         response.setHeader(ALLOW_CREDENTIALS, TRUE);
-        response.setHeader(ALLOW_HEADERS,  request.getHeader(REQUEST_HEADERS));
+        response.setHeader(ALLOW_HEADERS, request.getHeader(REQUEST_HEADERS));
         if (request.getMethod().equals(OPTIONS)) {
             response.getWriter().print(OK);
             response.getWriter().flush();

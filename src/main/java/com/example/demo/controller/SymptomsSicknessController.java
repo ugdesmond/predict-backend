@@ -80,7 +80,7 @@ public class SymptomsSicknessController {
     //@PreAuthorize("hasAnyAuthority('ADMIN')")
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
     @RequestMapping(method = RequestMethod.PUT)
-    public ResponseEntity<MessageResponse<SymptomsSicknessViewModel>> updateSymptomsSickness(@Valid @RequestBody SymptomsSicknessViewModel symptomsSicknessViewModel, BindingResult bindingResults){
+    public ResponseEntity<MessageResponse<SymptomsSicknessViewModel>> updateSymptomsSickness(@Valid @RequestBody SymptomsSicknessViewModel symptomsSicknessViewModel, BindingResult bindingResults) {
         try {
             MessageResponse<SymptomsSicknessViewModel> messageResponse = new MessageResponse<>();
             List<SymptomsSickness> symptomsSicknessList = new ArrayList<>();
@@ -94,7 +94,7 @@ public class SymptomsSicknessController {
                 Sickness sicknessObject = new Sickness();
                 sicknessObject.setId(symptomsSicknessViewModel.getSicknessId());
                 HashSet<Integer> symptomHashSet = symptomsSicknessBusinessLogic.getByColumnName("sickness", sicknessObject).stream().filter(p -> p.getStatus().equals(Constant.STATUS.ACTIVATED.getValue())).collect(Collectors.toList()).stream().map(p -> p.getSymptoms().getId()).collect(Collectors.toCollection(HashSet::new));
-                if(symptomHashSet.isEmpty()){
+                if (symptomHashSet.isEmpty()) {
                     throw new ResponseStatusException(HttpStatus.CONFLICT, "Sickness does not exist!");
                 }
                 for (Integer symptomVal : symptomIntegerArray) {
@@ -132,7 +132,7 @@ public class SymptomsSicknessController {
                 return new ResponseEntity<>(messageResponse, HttpStatus.OK);
             }
         } catch (Exception e) {
-            logger.info("========="+e.getMessage());
+            logger.info("=========" + e.getMessage());
             throw e;
         }
         return entityResponse.getInvalidFormError(symptomsSicknessViewModel);

@@ -33,7 +33,7 @@ public class SymptomsSicknessBusinessLogic extends AbstractJpaDao<SymptomsSickne
             Root<SymptomsSickness> root = cr.from(SymptomsSickness.class);
             Join<SymptomsSickness, Symptoms> symptomsJoin = root.join("symptoms");
             Join<SymptomsSickness, Symptoms> sicknessJoin = root.join("sickness");
-            Predicate symptomsName1 = cb.equal(symptomsJoin.get("symptomsName"),utility.capitalizeFirstLetter(predictionArray[0]));
+            Predicate symptomsName1 = cb.equal(symptomsJoin.get("symptomsName"), utility.capitalizeFirstLetter(predictionArray[0]));
             Predicate symptomsName2 = cb.equal(symptomsJoin.get("symptomsName"), utility.capitalizeFirstLetter(predictionArray[1]));
             Predicate symptomsName3 = cb.like(symptomsJoin.get("symptomsName"), "%" + predictionArray[2] + "%");
             Predicate symptomsName4 = cb.like(symptomsJoin.get("symptomsName"), "%" + predictionArray[3] + "%");

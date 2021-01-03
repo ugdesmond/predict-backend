@@ -3,9 +3,9 @@ package com.example.demo.controller;
 import org.springframework.http.HttpStatus;
 
 public class MessageResponse<T> {
-    private String message="Successful";
-    private int status=HttpStatus.OK.value();
-    private boolean isSuccessful= true;
+    private String message = "Successful";
+    private int status = HttpStatus.OK.value();
+    private boolean isSuccessful = true;
     private T data;
 
 
@@ -40,7 +40,6 @@ public class MessageResponse<T> {
     public void setStatus(int status) {
         this.status = status;
     }
-
 
 
 }

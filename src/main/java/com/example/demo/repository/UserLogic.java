@@ -17,7 +17,6 @@ public class UserLogic extends AbstractJpaDao<User> {
     Logger logger = Logger.getLogger(UserLogic.class);
 
 
-
     public List<User> getByColumnName(String columnName, String value) {
         List<User> userList = new ArrayList<>();
         try {
@@ -34,15 +33,15 @@ public class UserLogic extends AbstractJpaDao<User> {
         return userList;
     }
 
-    public List<User> getTestData( String columName,String value) {
+    public List<User> getTestData(String columName, String value) {
         List<User> userList = new ArrayList<>();
         try {
             CriteriaBuilder cb = getCurrentSession().getCriteriaBuilder();
             CriteriaQuery<User> cr = cb.createQuery(User.class);
             Root<User> root = cr.from(User.class);
             Join<User, Person> personJoin = root.join("person");
-            Predicate personPredicate=cb.equal(personJoin.get(columName),value);
-           //Predicate userPredicate=cb.equal(root.get(columName),value);
+            Predicate personPredicate = cb.equal(personJoin.get(columName), value);
+            //Predicate userPredicate=cb.equal(root.get(columName),value);
             cr.select(root).where(cb.and(personPredicate)).orderBy(cb.asc(root.get("id")));
             Query<User> query = getCurrentSession().createQuery(cr);
             userList = query.getResultList();

@@ -26,15 +26,16 @@ public class PredictionController {
         this.symptomsSicknessBusinessLogic = symptomsSicknessBusinessLogic;
         this.entityResponse = entityResponse;
     }
+
     @PreAuthorize("hasAnyAuthority('ADMIN')")
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<MessageResponse<List<String>>> getSicknessPredictions( @NotNull @NotEmpty @RequestParam String predictionValue) throws Exception {
+    public ResponseEntity<MessageResponse<List<String>>> getSicknessPredictions(@NotNull @NotEmpty @RequestParam String predictionValue) throws Exception {
         MessageResponse<List<String>> messageResponse = new MessageResponse<>();
-        String [] predictionArray = predictionValue.split(",");
-        if(predictionValue .equals("") || predictionArray.length != 6){
-         throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Param must contain 6 comma separated  values");
+        String[] predictionArray = predictionValue.split(",");
+        if (predictionValue.equals("") || predictionArray.length != 6) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Param must contain 6 comma separated  values");
         }
-        List<String>  predictionList = symptomsSicknessBusinessLogic.getPredictionList(predictionArray);
+        List<String> predictionList = symptomsSicknessBusinessLogic.getPredictionList(predictionArray);
         messageResponse.setMessage("Sicknesses retrieved successfully");
         messageResponse.setData(predictionList);
         messageResponse.setStatus(HttpStatus.OK.value());

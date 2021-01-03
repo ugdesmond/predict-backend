@@ -43,9 +43,9 @@ public class AjaxAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuc
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         User user = userService.createUserToken(authentication.getName(), request.getRemoteAddr());
-        UserDTO userDTO =utility.convertToDto(user,UserDTO.class);
+        UserDTO userDTO = utility.convertToDto(user, UserDTO.class);
         userDTO.setExpiresIn(dateGenerator.getExpirationDate());
-        MessageResponse<UserDTO> messageResponse= new MessageResponse<>();
+        MessageResponse<UserDTO> messageResponse = new MessageResponse<>();
         messageResponse.setStatus(HttpStatus.OK.value());
         messageResponse.setMessage("Logged in successfully");
         messageResponse.setData(userDTO);

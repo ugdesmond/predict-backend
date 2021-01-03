@@ -26,7 +26,7 @@ public class AjaxAuthenticationFailureHandler extends SimpleUrlAuthenticationFai
 
     @Autowired
     HeaderHandler headerHandler;
-    Logger logger=Logger.getLogger(AjaxAuthenticationFailureHandler.class);
+    Logger logger = Logger.getLogger(AjaxAuthenticationFailureHandler.class);
     Gson gson = new Gson();
 
     @Override

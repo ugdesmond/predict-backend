@@ -44,16 +44,18 @@ public class AbstractJpaDao<T extends Serializable> implements IGenericDao<T> {
     @SuppressWarnings("unchecked")
     public List<T> findAll() {
 
-        return entityManager.createQuery("FROM " + clazz.getName()+" entity ORDER BY entity.id ASC")
+        return entityManager.createQuery("FROM " + clazz.getName() + " entity ORDER BY entity.id ASC")
                 .getResultList();
     }
 
     public void create(T entity) {
         entityManager.persist(entity);
     }
+
     public void create(List<T> list) {
-        for(T  entity:list){
-        entityManager.persist(entity);}
+        for (T entity : list) {
+            entityManager.persist(entity);
+        }
     }
 
     public T update(T entity) {

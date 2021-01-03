@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name="sickness")
+@Table(name = "sickness")
 public class Sickness implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

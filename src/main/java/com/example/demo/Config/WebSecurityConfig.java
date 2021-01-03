@@ -35,7 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
     DispatcherFilter dispatcherFilter;
 
-    public WebSecurityConfig(AjaxAuthenticationSuccessHandler ajaxAuthenticationSuccessHandler, AjaxAuthenticationFailureHandler ajaxAuthenticationFailureHandler, AjaxLogoutSuccessHandler ajaxLogoutSuccessHandler, Http401UnauthorizedEntryPoint authenticationEntryPoint, AuthProviderService authProvider, SecurityProperties security, JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter,DispatcherFilter dispatcherFilter) {
+    public WebSecurityConfig(AjaxAuthenticationSuccessHandler ajaxAuthenticationSuccessHandler, AjaxAuthenticationFailureHandler ajaxAuthenticationFailureHandler, AjaxLogoutSuccessHandler ajaxLogoutSuccessHandler, Http401UnauthorizedEntryPoint authenticationEntryPoint, AuthProviderService authProvider, SecurityProperties security, JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter, DispatcherFilter dispatcherFilter) {
         this.ajaxAuthenticationSuccessHandler = ajaxAuthenticationSuccessHandler;
         this.ajaxAuthenticationFailureHandler = ajaxAuthenticationFailureHandler;
         this.ajaxLogoutSuccessHandler = ajaxLogoutSuccessHandler;
@@ -43,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         this.authProvider = authProvider;
         this.security = security;
         this.jwtAuthenticationTokenFilter = jwtAuthenticationTokenFilter;
-        this.dispatcherFilter= dispatcherFilter;
+        this.dispatcherFilter = dispatcherFilter;
     }
 
     @Override

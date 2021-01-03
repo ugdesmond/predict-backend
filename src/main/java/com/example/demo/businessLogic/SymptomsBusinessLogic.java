@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class SymptomsBusinessLogic  extends AbstractJpaDao<Symptoms> {
+public class SymptomsBusinessLogic extends AbstractJpaDao<Symptoms> {
     Logger logger = Logger.getLogger(SymptomsBusinessLogic.class);
 
 

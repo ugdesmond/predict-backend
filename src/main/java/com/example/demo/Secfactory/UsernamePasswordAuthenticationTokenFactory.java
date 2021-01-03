@@ -16,12 +16,12 @@ import java.util.stream.Collectors;
 public class UsernamePasswordAuthenticationTokenFactory {
 
     public UsernamePasswordAuthenticationToken create(User u) {
-        List<String> stringList= new ArrayList<>();
+        List<String> stringList = new ArrayList<>();
         stringList.add(u.getRole());
 
-        List<GrantedAuthority> grantedAuthorityList =stringList.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+        List<GrantedAuthority> grantedAuthorityList = stringList.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
 
-        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(u.getUsername(), u.getPassword(),grantedAuthorityList);
+        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(u.getUsername(), u.getPassword(), grantedAuthorityList);
         return authentication;
     }
 

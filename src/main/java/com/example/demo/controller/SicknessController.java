@@ -96,7 +96,7 @@ public class SicknessController {
 
     @PreAuthorize("hasAnyAuthority('ADMIN')")
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
-    @RequestMapping(method = RequestMethod.DELETE,value = "/{id}")
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
     public ResponseEntity<MessageResponse<Sickness>> deleteSickness(@PathVariable @NotNull Integer id) {
         MessageResponse<Sickness> messageResponse = new MessageResponse<>();
         try {

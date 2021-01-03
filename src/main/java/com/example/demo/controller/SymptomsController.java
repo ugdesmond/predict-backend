@@ -106,7 +106,7 @@ public class SymptomsController {
     @PreAuthorize("hasAnyAuthority('ADMIN')")
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
-    public ResponseEntity<MessageResponse<Symptoms>> deleteSymptom( @NotNull @PathVariable Integer id) {
+    public ResponseEntity<MessageResponse<Symptoms>> deleteSymptom(@NotNull @PathVariable Integer id) {
         MessageResponse<Symptoms> messageResponse = new MessageResponse<>();
         try {
             Symptoms symptoms = symptomsBusinessLogic.findOne(id);
